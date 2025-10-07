@@ -27,10 +27,10 @@ Struct that hold the desired usart configuration data.
 |data member name|description|
 |------------------|-------------|
 |baudRate| the desired baudrate of the usart communication|
-|usartMode|the desired mode of communication async or sync (refer to [usart modes](##usart-modes) for macro options)|
+|usartMode|the desired mode of communication async or sync (refer to [usart modes](#usart-modes) for macro options)|
 |frameSize|the number of bits per frame transmission (accepts values where 5 <= frameSize <= 9 as uint8_t)|
-|stopBits|the number of stopBits per frame transmission (refer to [stop bit options](##stop-bit-options) for macro options)|
-|parityMode|enable/disable parity for usart transmission (refer to [parity modes](##parity-modes) for macro options)|
+|stopBits|the number of stopBits per frame transmission (refer to [stop bit options](#stop-bit-options) for macro options)|
+|parityMode|enable/disable parity for usart transmission (refer to [parity modes](#parity-modes) for macro options)|
 ## usart_config_ptr
 pointer to usart_config_t
 # Functions
