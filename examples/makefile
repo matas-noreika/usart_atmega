@@ -18,31 +18,36 @@ EXES=$(SRCS:%.c=$(LOCALBIN)/%.exe)
 ELFS=$(SRCS:%.c=$(LOCALBIN)/%.elf)
 
 #declare all and clean
-.PHONY: all clean
+.PHONY: all clean buildlib
 
 #retain all object files generated
-.PRECIOUS: $(LOCALBIN)/%.elf $(LOCALBIN)/%.exe $(LOCALOBJ)/%.o
+.PRECIOUS: $(LOCALBIN)/%.elf $(LOCALBIN)/%.exe 
 
 all: $(ELFS)
 
 clean:
 	@echo "Running clean"
 	-@rm -f $(LOCALBIN)/*.exe 2> /dev/null
-	-@rm -f $(LOCALOBJ)/*.c 2> /dev/null
+	-@rm -f $(LOCALOBJ)/*.o 2> /dev/null
 	-@rm -f $(LOCALDEP)/*.d 2> /dev/null
+	-@rm -f $(LOCALBIN)/*.elf 2> /dev/null
 
 #include .d file rules
 -include $(DEPS)
 
+#builds required libraries
+buildlib:
+	$(MAKE) -C ../src
+
 #static pattern rule to generate object files
-$(LOCALOBJ)/%.o: %.c
+$(OBJS): $(LOCALOBJ)/%.o: %.c
 	$(CC) $(CCFLAGS) -c -MMD $< -o $@
 	mv $(LOCALOBJ)/$(*F).d $(LOCALDEP)/$(*F).d
 
 #static pattern rule to generate exe files
-$(LOCALBIN)/%.exe: %.c $(LOCALOBJ)/usart.o
-	$(CC) $(CCFLAGS) $^ -o $@
+$(EXES): $(LOCALBIN)/%.exe: $(LOCALOBJ)/%.o buildlib
+	$(CC) $(CCFLAGS) $< $(LOCALOBJ)/usart.o -o $@
 
 #static pattern rule to generate elf files
-$(LOCALBIN)/%.elf: $(LOCALBIN)/%.exe
+$(ELFS): $(LOCALBIN)/%.elf: $(LOCALBIN)/%.exe
 	avr-objcopy $< -O ihex $@

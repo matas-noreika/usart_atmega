@@ -26,7 +26,7 @@ all: $(OBJS)
 clean:
 	@echo "Running clean"
 	-@rm -f $(LOCALBIN)/*.exe 2> /dev/null
-	-@rm -f $(LOCALOBJ)/*.c 2> /dev/null
+	-@rm -f $(LOCALOBJ)/*.o 2> /dev/null
 	-@rm -f $(LOCALDEP)/*.d 2> /dev/null
 
 #include .d file rules
