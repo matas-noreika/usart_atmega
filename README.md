@@ -1,5 +1,11 @@
 # usart_atmega
 usart library for the atmega328p for embedded systems programming using embedded C and avr-gcc
+# Still in development
+The following is a list of features still to be implemented into the library:
+* ODR (output data rate) flag for baud rate control
+* Resolve issue with F_CPU macro conflict
+* Add interrupt support handlers
+* Add usart number flag to select which usart to use (if more that usart 0 is available on microcontroller)
 # makefile Suggestions
 A possible way of including this library to projects are to git clone the repository to a libs directory in the project directory. Then you can either generate a shell script to iterate through all project folders to call make or make a explicit rule in your project makefile.
 `make -C other_makefile_dir`
