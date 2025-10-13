@@ -17,7 +17,7 @@ Currently the library requires the manual definition of F_CPU macro in usart.h. 
 ### `USART_MODE_ASYNC`
 Asynchronous communication (UART)
 ### `USART_MODE_SYNC`
-Asynchronous communication (USRT)
+Synchronous communication (USRT)
 ## usart_stop_bit_t
 ### `USART_STOP_BIT_1`
 Sets the frame to use 1 stop bit
