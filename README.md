@@ -9,7 +9,7 @@ The following is a list of features still to be implemented into the library:
 # makefile Suggestions
 A possible way of including this library to projects are to git clone the repository to a libs directory in the project directory. Then you can either generate a shell script to iterate through all project folders to call make or make a explicit rule in your project makefile.
 `make -C other_makefile_dir`
-the command above will rule make in the provided directory.
+the command above will run make in the provided directory.
 # Disclaimer
 Currently the library requires the manual definition of F_CPU macro in usart.h. This macro is also used by the avr-libc for functions like _delay_ms()
 # type definitions
