@@ -6,6 +6,7 @@ The following is a list of features still to be implemented into the library:
 * Resolve issue with F_CPU macro conflict
 * Add interrupt support handlers
 * Add usart number flag to select which usart to use (if more that usart 0 is available on microcontroller)
+* add read functions (unfortunately missed this in first pass 🫣)
 # makefile Suggestions
 A possible way of including this library to projects are to git clone the repository to a libs directory in the project directory. Then you can either generate a shell script to iterate through all project folders to call make or make a explicit rule in your project makefile.
 `make -C other_makefile_dir`
