@@ -15,7 +15,7 @@ the command above will run make in the provided directory.
 Currently the library requires the manual definition of F_CPU macro in usart.h. This macro is also used by the avr-libc for functions like _delay_ms()
 # type definitions
 ## usart_mode_t
-### `USART_MODE_ASYNC`
+### <span style="color: green">`USART_MODE_ASYNC`</span>
 Asynchronous communication (UART)
 ### `USART_MODE_SYNC`
 Synchronous communication (USRT)
