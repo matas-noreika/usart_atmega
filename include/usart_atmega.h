@@ -70,4 +70,10 @@ void usart_sendChar(uint8_t usart_num, char c);
 //function to send a string using the usart
 void usart_sendString(uint8_t usart_num, char* string);
 
+//function to determine if there is content avaible to read from the usart
+uint8_t usart_available(uint8_t usart_num);
+
+//function to read the contents of usart buffer
+char usart_readChar(uint8_t usart_num);
+
 #endif

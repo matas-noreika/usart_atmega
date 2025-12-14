@@ -211,3 +211,30 @@ void usart_sendString(uint8_t usart_num, char* string){
   }
 }
 
+//function to determine if there is content avaible to read from the usart
+uint8_t usart_available(uint8_t usart_num){
+
+  switch(usart_num){
+    case 0:
+      return (UCSR0A & 1<<RXC0);
+      break;
+    default:
+      //assert an error
+      break;
+  }
+
+  return 0;
+}
+
+//function to read the contents of usart buffer
+//will return garbage ensure to wrap call using usart_available
+char usart_readChar(uint8_t usart_num){
+  switch(usart_num){
+    case 0:
+      return UDR0;
+      break;
+    default:
+      //assert error
+      break;
+  }
+}

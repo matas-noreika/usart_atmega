@@ -22,7 +22,7 @@ TESTSRCS=$(wildcard $(LOCALTESTS)/*.c)
 OBJS=$(SRCS:$(LOCALSRC)/%.c=$(LOCALOBJ)/%.o)
 DEPS=$(SRCS:$(LOCALSRC)/%.c=%.d)
 EXES=$(TESTSRCS:$(LOCALTESTS)/%.c=$(LOCALBIN)/%.exe)
-ELFS=$(EXES:%.exe=%.elf)
+HEXS=$(EXES:%.exe=%.hex)
 
 #declare all and clean
 .PHONY: all clean
@@ -38,7 +38,7 @@ clean:
 	-@rm -f $(LOCALOBJ)/*.a 2> /dev/null
 
 #generates test elf's from tests
-tests: $(ELFS)
+tests: $(HEXS)
 
 #include .d file rules
 -include $(DEPS)
@@ -53,7 +53,7 @@ $(EXES): $(LOCALBIN)/%.exe: $(LOCALTESTS)/%.c
 	$(CC) $(CCFLAGS) $< $(LDFLAGS) -o $@
 
 #static pattern to generate elf files from exe
-$(ELFS): $(LOCALBIN)/%.elf: $(LOCALBIN)/%.exe
+$(HEXS): $(LOCALBIN)/%.hex: $(LOCALBIN)/%.exe
 	avr-objcopy -O ihex $< $@
 
 #rule to generate static library from object files
